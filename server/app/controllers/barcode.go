@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/robfig/revel"
 	"github.com/saintfish/barcode"
+	"github.com/saintfish/revel"
 	"image"
 	"image/png"
 	"net/http"
