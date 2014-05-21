@@ -24,7 +24,7 @@ var (
 )
 
 func imgFromFileOrDie(filename string) image.Image {
-	data, err := Asset(filename)
+	data, err := asset(filename)
 	if err != nil {
 		panic(err)
 	}

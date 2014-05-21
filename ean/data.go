@@ -289,7 +289,7 @@ func l_gif() ([]byte, error) {
 // Asset loads and returns the asset for the given name.
 // It returns an error if the asset could not be found or
 // could not be loaded.
-func Asset(name string) ([]byte, error) {
+func asset(name string) ([]byte, error) {
 	if f, ok := _bindata[name]; ok {
 		return f()
 	}
