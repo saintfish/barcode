@@ -4,12 +4,13 @@ import (
 	"bytes"
 	"image"
 	"image/draw"
-	_ "image/gif"
+	_ "image/png"
 )
 
 const (
-	kEan13WeigthPx = 13*7 + 5 + 3*2
-	kEan13HeightPx = 70
+	kPixelPerDot   = 4
+	kEan13WeigthPx = (13*7 + 5 + 3*2) * kPixelPerDot
+	kEan13HeightPx = 70 * kPixelPerDot
 )
 
 var (
@@ -37,11 +38,11 @@ func imgFromFileOrDie(filename string) image.Image {
 }
 
 func init() {
-	l = imgFromFileOrDie("l.gif")
-	g = imgFromFileOrDie("g.gif")
-	r = imgFromFileOrDie("r.gif")
-	blank = imgFromFileOrDie("blank.gif")
-	special = imgFromFileOrDie("special.gif")
+	l = imgFromFileOrDie("l.png")
+	g = imgFromFileOrDie("g.png")
+	r = imgFromFileOrDie("r.png")
+	blank = imgFromFileOrDie("blank.png")
+	special = imgFromFileOrDie("special.png")
 }
 
 type imageWriter struct {
@@ -74,6 +75,8 @@ const (
 )
 
 func (w *imageWriter) writeImage(img image.Image, x, width int) {
+	x = x * kPixelPerDot
+	width = width * kPixelPerDot
 	draw.Draw(
 		w.image, image.Rect(w.xOffset, 0, w.xOffset+width, kEan13HeightPx),
 		img, image.Point{x, 0},
