@@ -1,7 +1,7 @@
 package barcode
 
 import (
-	"bitbucket.org/zombiezen/gopdf/pdf"
+	"bitbucket.org/saintfish/gopdf/pdf"
 	"image"
 )
 
